@@ -1,5 +1,4 @@
 import requests
-import json
 
 
 def superhero(heroes):
@@ -7,7 +6,7 @@ def superhero(heroes):
     results = {}
     for one_hero in heroes:
         responce = requests.get(url + one_hero)
-        text = json.loads(responce.text)
+        text = responce.json()
         for name_hero in text['results']:
             if name_hero['name'] == one_hero:
                 results[one_hero] = int(name_hero['powerstats']['intelligence'])
